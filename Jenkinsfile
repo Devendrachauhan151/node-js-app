@@ -17,8 +17,8 @@ pipeline {
     stage('Push') {
       steps {
         // Login to Docker Hub
-        withCredentials([usernamePassword(credentialsId: 'your-credentials-id', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
-          sh 'docker login -u $devendradocker3212 -p $dckr_pat_yRXAXiqyt3lxq9GhuLVjbJ7vwFk'
+        withCredentials([usernamePassword(credentialsId: 'devendradocker3212', passwordVariable: 'dckr_pat_4wiVzGjMYnw0rsql0BA9P6XlHSk', usernameVariable: 'devendradocker3212')]) {
+          sh 'docker login -u $devendradocker3212 -p $dckr_pat_4wiVzGjMYnw0rsql0BA9P6XlHSk'
         }
 
         // Push the Docker image to Docker Hub
