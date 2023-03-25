@@ -4,12 +4,12 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        // Checkout the repository
-        git 'https://github.com/Devendrachauhan151/the-example-app.nodejs.git'
-
+        withCredentials([usernamePassword(credentialsId: 'Devendrachauhan151', passwordVariable: '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', usernameVariable: 'Devendrachauhan151')]) {
+          // Checkout the Git repository with the provided credentials
+  
         // Build the Docker image
         script {
-          docker.build("Node-app234:latest")
+          docker.build("Node-app1234:latest")
         }
       }
     }
@@ -18,7 +18,7 @@ pipeline {
       steps {
         // Login to Docker Hub
         withCredentials([usernamePassword(credentialsId: 'devendradocker3212', passwordVariable: 'dckr_pat_4wiVzGjMYnw0rsql0BA9P6XlHSk', usernameVariable: 'devendradocker3212')]) {
-          sh 'docker login -u $devendradocker3212 -p $dckr_pat_4wiVzGjMYnw0rsql0BA9P6XlHSk'
+          sh 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD'
         }
 
         // Push the Docker image to Docker Hub
